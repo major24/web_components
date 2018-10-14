@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-Simple Popup</title>
+    <script src="../javascripts/yes-no-selector.js"></script>
+    <script>
+    </script>
+  </head>
+  <body onload="onload()">
+    <h3><%= title %></h3>
+    <hr />
+    <div>
+      Will you go to "Lion King" movie today?
+    </div>
+    <yes-no-selector id="movie" 
+            label1="I will" 
+            label2="I will not"
+            value1="iwill"
+            value2="iwillnot"
+            >
+    </yes-no-selector>
+    <br /> <br />
+    <div>
+      (listening to click event from component!)
+      <br />
+      <label id="label_movie_selected_value">
+        selection result...:
+      </label>
+    </div>
+    
+    <br /> <br /> <br />
+    <hr />
+      <p>Example 2: test with list of objects..</p>
+    <hr />
+    <div>
+      <h3>Do you like fruit?</h3>
+      <ul>
+      <% for(var i=0; i<fruits.length; i++) { %>
+          <li>
+                <%= fruits[i] %>
+                <span> --- </span>
+                <yes-no-selector id="<%= fruits[i] %>" 
+                    label1="Yes" 
+                    label2="Noooo"
+                    value1="yes"
+                    value2="no"
+                  onclick="fruit_el_clicked(this)">
+                </yes-no-selector>
+          </li>
+        <% } %>
+      </ul>
+      </div>
+        <p>
+          MSG: <label id="lbl_fruit_selected">...</label>
+        </p>
+      </div>
+    </div>
+    <!--  ejs is var is not available in js. so populate to a textbox
+        so we can access it in JS. dont like it 
+    <input type="text" id="hidFruits" value="<%= fruits %>" />
+    -->
+    
+  </body>
+
+      <script>
+      function onload() {
+        console.log('doc on load');
+        // add event listener for radio button to listen to..
+        var el_movie_will_go = document.getElementById('movie').selector1;
+        var el_movie_will_not_go = document.getElementById('movie').selector2;
+        el_movie_will_go.addEventListener('click', movie_selector_click);
+        el_movie_will_not_go.addEventListener('click', movie_selector_click);
+      }
+
+      function movie_selector_click(e){
+        // console.log(e.target);
+        var el_label_movie_selected_value = document.getElementById('label_movie_selected_value');
+        el_label_movie_selected_value.innerHTML = `
+            You have selected: value: <b>${e.target.value}</b> - checked: ${e.target.checked}
+        `;
+      }
+
+      // fruit..
+      function fruit_el_clicked(e) {
+        //console.log('debug..');
+        console.log(e);
+        var fruitName = e.getAttribute('id');
+        var isChecked;
+        var selValue = '';
+        // when click happens this triggers for both rdo buttons
+        // because it is on the parent el
+        // so only check for yes, and based on get the value selected
+        var isYesChecked = document.getElementById(fruitName).selector1.checked;
+        if (isYesChecked) {
+          isChecked = true;
+          selValue = document.getElementById(fruitName).selector1.value;
+        } else {
+          isChecked = false;
+          selValue = document.getElementById(fruitName).selector2.value;
+        }
+        //var isChecked = document.getElementById(fruitName).selector2.checked;
+        //console.log(document.getElementById(e.getAttribute('id')).selector1);
+        
+        var elMsg = document.getElementById('lbl_fruit_selected');
+        elMsg.innerHTML = `
+            <p>Fruit: ${fruitName}</p>
+            <p>sel bool: ${isChecked}</p>
+            <p>sel rdo value: ${selValue}</p>
+            `;
+      }
+
+
+    </script>
+</html>

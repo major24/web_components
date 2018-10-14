@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-HelloWorld</title>
+    <script>
+      class HelloWorld extends HTMLElement {
+        constructor() {
+          super();
+          // Attach a shadow root to the element.
+          let shadowRoot = this.attachShadow({mode: 'open'});
+          shadowRoot.innerHTML = `<p>hello world</p>`;
+        }
+      }
+      customElements.define('hello-world', HelloWorld);
+    </script>
+  </head>
+  <body>
+    <h3><%= title %></h3>
+    <hr />
+    <hello-world></hello-world>
+  </body>
+</html>

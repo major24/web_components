@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-Simple Popup</title>
+    <script src="../javascripts/simple-popup.js"></script>
+    <script>
+        function testReadingElement() {
+          setTimeout(() => {
+            console.log('reading from element');
+            var el = document.getElementById('sp1');
+            console.log(el);
+            console.log(el.getAttribute('value'));
+          }, 1000)
+        }
+
+        testReadingElement();
+    </script>
+  </head>
+  <body>
+    <h3><%= title %></h3>
+    <hr />
+    <simple-popup id="sp1" value="This my comments pushed by element!!"></simple-popup>
+  
+  </body>
+</html>

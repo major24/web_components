@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-Textbox-PostCode</title>
+    <script src="../javascripts/textbox-postcode.js"></script>
+    <script>
+        function readPostcode(){
+          var span = document.querySelector('[msg]');
+          var pc_ca = document.getElementById('pc-ca').postcodeTxt.value;
+          var pc_us = document.getElementById('pc-us').postcodeTxt.value;
+          console.log(pc_ca);
+          span.innerHTML = pc_ca + "<br />" + pc_us;
+        }
+    </script>
+  </head>
+  <body>
+    <h3><%= title %></h3>
+    <hr />
+    <p>validate post code based on the country</p>
+    <p>Ex. Canada: a1a 1a1 or A1A 1A1</p>
+    <p>Ex. USA: 5 digits only</p>
+   <label>
+      Country: CA <post-code id="pc-ca" country="ca"></post-code>
+   </label>
+   <hr />
+   <label>
+      Country: US <post-code id="pc-us" country="us"></post-code>
+   </label>
+   <hr />
+   <button onclick="readPostcode()">Read Postcode-ca</button>
+   <div>
+     <span msg>...</span>
+   </div>
+  </body>
+</html>
