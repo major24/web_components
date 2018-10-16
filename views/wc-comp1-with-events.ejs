@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-Simple Popup</title>
+    <script src="../javascripts/comp1-with-events.js"></script>
+    <script>
+    </script>
+  </head>
+  <body>
+    <h3><%= title %></h3>
+    <hr />
+
+    <comp-1></comp-1>
+    
+    <script>
+        document.addEventListener('awesome', e => {
+          console.log('in doc');
+          console.log(e.detail.text())
+        });
+    </script>
+  </body>
+</html>

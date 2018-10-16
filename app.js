@@ -12,6 +12,7 @@ var wcCounterRouter = require('./routes/wc-counter');
 var wcTextboxPostcodeRouter = require('./routes/wc-textbox-postcode');
 var wcYesNoSelectorRouter = require('./routes/wc-yes-no-selector');
 var CustomEventSimpleTextAreaRouter = require('./routes/custom-event-simple-textarea');
+var wcComp1WithEventsRouter = require('./routes/wc-comp1-with-events');
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use('/wc-counter', wcCounterRouter);
 app.use('/wc-textbox-postcode', wcTextboxPostcodeRouter);
 app.use('/wc-yes-no-selector', wcYesNoSelectorRouter);
 app.use('/custom-event-simple-textarea', CustomEventSimpleTextAreaRouter);
+app.use('/wc-comp1-with-events', wcComp1WithEventsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
