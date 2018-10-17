@@ -3,6 +3,7 @@
   <head>
     <title>WC-Simple Popup</title>
     <script src="../javascripts/comp1-with-events.js"></script>
+    <script src="../javascripts/comp2-with-events.js"></script>
     <script>
     </script>
   </head>
@@ -11,11 +12,19 @@
     <hr />
 
     <comp-1></comp-1>
-    
+
+    <br /><br /><br />
+
+    <comp-2 id="comp2" value="initial value"></comp-2>
+
     <script>
-        document.addEventListener('awesome', e => {
+          document.addEventListener('awesome', e => {
           console.log('in doc');
           console.log(e.detail.text())
+          
+          var el_comp2 = document.querySelector('#comp2');
+          console.log(el_comp2);
+          el_comp2.setAttribute('value', e.detail.text());
         });
     </script>
   </body>

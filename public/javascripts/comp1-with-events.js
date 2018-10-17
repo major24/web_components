@@ -5,8 +5,14 @@
 
   template.innerHTML = `
     <style>
+        .comp1-content {
+            border-style: groove;
+            padding: 5px;
+        }
     </style>
-    <div>
+    <div  class="comp1-content">
+        <div>component1</div>
+        <br />
         Search: <input type="text" id="search"></input>
         <button type="button" id="submit">Submit</button>
     </div>
@@ -64,17 +70,6 @@
     disconnectedCallback() {
       this.submitBtn.removeEventListener('click', this.submit);
     }
-
-
-
-
-    // The form element listens for the custom "awesome" event and then consoles the output of the passed text() method
-    //form.addEventListener('awesome', e => console.log(e.detail.text()));
-
-    // -------------------------
-
-
-
   }
 
   window.customElements.define('comp-1', Comp1);

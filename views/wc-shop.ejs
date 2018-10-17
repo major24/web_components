@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WC-Shop</title>
+    <script src="../javascripts/mn-search.js"></script>
+
+    <script>
+    </script>
+  </head>
+  <body>
+    <h3><%= title %></h3>
+    <hr />
+
+    <mn-search search-title="Product Search: "></mn-search>
+
+
+    <script>
+          document.addEventListener('search', e => {
+          console.log('in doc');
+          console.log(e.detail.text())
+          
+          //var el_comp2 = document.querySelector('#comp2');
+          //console.log(el_comp2);
+          //el_comp2.setAttribute('value', e.detail.text());
+        });
+    </script>
+  </body>
+</html>
