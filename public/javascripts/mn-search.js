@@ -22,6 +22,7 @@
       super();
 
         this.submit = this.submit.bind(this);
+        //this.submitOnKeypress = this.submitOnKeypress.bind(this);
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -36,6 +37,8 @@
             bubbles: true,
             detail: { text: () => this.textValue.value }
         });
+
+
     }
 
     static get observedAttributes() {
@@ -50,6 +53,10 @@
         } else {
             this.setAttribute('search-title', 'Search:');
         }
+
+        this.textValue.addEventListener('input', e => {
+            this.submitOnKeypress(e.target);
+        });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -58,12 +65,21 @@
 
     disconnectedCallback() {
       this.submitBtn.removeEventListener('click', this.submit);
+      this.textValue.removeEventListener('input', this.submitOnKeypress);
     }
 
 
     submit() {
         console.log('submit..');
         this.dispatchEvent(this.eventSearch);
+    }
+
+    submitOnKeypress(e) {
+        console.log('submit on keypress..');
+        console.log(e.value);
+        if (e.value && e.value.length > 3){
+            this.dispatchEvent(this.eventSearch);
+        }
     }
 
     get searchTitle() {

@@ -3,7 +3,7 @@
   <head>
     <title>WC-Shop</title>
     <script src="../javascripts/mn-search.js"></script>
-
+    <script src="../javascripts/mn-product.js"></script>
     <script>
     </script>
   </head>
@@ -12,6 +12,12 @@
     <hr />
 
     <mn-search search-title="Product Search: "></mn-search>
+    <br /> <br /><br />
+
+    <mn-product id="mn-product-comp"
+          product-title="Product Catalog"
+          q="" >
+    </mn-product>
 
 
     <script>
@@ -19,9 +25,9 @@
           console.log('in doc');
           console.log(e.detail.text())
           
-          //var el_comp2 = document.querySelector('#comp2');
-          //console.log(el_comp2);
-          //el_comp2.setAttribute('value', e.detail.text());
+          var el_mn_product = document.querySelector('#mn-product-comp');
+          console.log(el_mn_product);
+          el_mn_product.setAttribute('q', e.detail.text());
         });
     </script>
   </body>
